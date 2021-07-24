@@ -2,7 +2,7 @@ public class Application {
     private static Logistics logistics;
 
     private static void initialize() throws Exception {
-        String transportType = "ship";
+        String transportType = "truck";
 
         switch (transportType){
             case "truck":

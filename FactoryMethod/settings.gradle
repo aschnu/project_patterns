@@ -1,2 +1,3 @@
 rootProject.name = 'FactoryMethod'
+include 'example'
 
