@@ -1,3 +1,5 @@
+package transport;
+
 public class Truck implements Transport{
 
     @Override

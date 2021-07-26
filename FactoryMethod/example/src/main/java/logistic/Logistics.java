@@ -1,3 +1,7 @@
+package logistic;
+
+import transport.Transport;
+
 public abstract class Logistics {
 
     abstract Transport createTransport();
