@@ -1,31 +1,31 @@
-import plant.Belladonna;
-import plant.Lavender;
+import plant.Bush;
+import plant.Herb;
 
 public class Application {
-    private static Lavender lavender;
-    private static Belladonna belladonna;
+    private static Herb herb;
+    private static Bush bush;
 
     public static void main(String[] args) throws Exception {
 
         String kindOfHerb = args[0];
 
         switch (kindOfHerb) {
-            case "lavender" -> lavender = new Lavender();
-            case "belladonna" -> belladonna = new Belladonna();
+            case "herb" -> herb = new Herb();
+            case "bush" -> bush = new Bush();
             default -> throw new Exception("Error! Unknown operating system.");
         }
 
-        if(lavender != null){
-            if(!lavender.isEdible()){
+        if(herb != null){
+            if(!herb.isEdible()){
                 System.out.println("Added warning.");
             }
-            lavender.packing(lavender.countNumberOfPackage(Integer.parseInt(args[1])));
+            herb.packing(herb.countNumberOfPackage(Integer.parseInt(args[1])));
         }
-        if(belladonna!=null){
-            if(!belladonna.isEdible()){
+        if(bush !=null){
+            if(!bush.isEdible()){
                 System.out.println("Added warning");
             }
-            belladonna.packing(belladonna.countNumberOfPackage(Integer.parseInt(args[1])));
+            bush.packing(bush.countNumberOfPackage(Integer.parseInt(args[1])));
         }
 
     }

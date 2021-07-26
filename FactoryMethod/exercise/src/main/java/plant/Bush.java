@@ -1,6 +1,6 @@
 package plant;
 
-public class Belladonna {
+public class Bush {
     private final int GRAM_PER_PACKAGE = 5;
 
     public boolean isEdible(){
@@ -13,6 +13,6 @@ public class Belladonna {
     }
 
     public void packing(int numberOfPackages){
-        System.out.println("Belladonna has been packed: " + numberOfPackages + " packages");
+        System.out.println("Bush has been packed: " + numberOfPackages + " packages");
     }
 }

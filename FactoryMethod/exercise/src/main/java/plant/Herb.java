@@ -3,7 +3,7 @@ package plant;
 /**
  * This plant is edible.
  */
-public class Lavender {
+public class Herb {
     private final int GRAM_PER_PACKAGE = 8;
 
     public boolean isEdible(){
@@ -16,7 +16,7 @@ public class Lavender {
     }
 
     public void packing(int numberOfPackages){
-        System.out.println("Lavender has been packed: " + numberOfPackages + " packages");
+        System.out.println("Herb has been packed: " + numberOfPackages + " packages");
     }
 
 }
