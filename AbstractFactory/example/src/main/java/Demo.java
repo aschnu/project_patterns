@@ -4,20 +4,23 @@ import factory.VictorianFurnitureFactory;
 
 import java.util.Objects;
 
-public class ApplicationConfigurator {
-
-    public static void main(String[] args) throws Exception {
+public class Demo {
+    private static Application configureApplication(String type) throws Exception {
         FurnitureFactory factory;
 
-        if (Objects.equals(args[0], "modern")) {
+        if (Objects.equals(type, "modern")) {
             factory = new ModernFurnitureFactory();
-        } else if (Objects.equals(args[0], "victorian")) {
+        } else if (Objects.equals(type, "victorian")) {
             factory = new VictorianFurnitureFactory();
         } else {
             throw new Exception("Error! Unknown operating system.");
         }
 
-        Application application = new Application(factory);
+        return new Application(factory);
+    }
+
+    public static void main(String[] args) throws Exception {
+        Application application = configureApplication(args[0]);
         application.createFurniture();
         application.hasLegs();
         application.sitOn();
