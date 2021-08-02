@@ -1,32 +1,36 @@
+import creator.BushCreator;
+import creator.HerbCreator;
+import creator.PlantCreator;
 import plant.Bush;
 import plant.Herb;
+import plant.Plant;
 
 public class Application {
-    private static Herb herb;
-    private static Bush bush;
 
-    public static void main(String[] args) throws Exception {
+	private static PlantCreator plantCreator;
+	private static Plant plant;
 
-        String kindOfHerb = args[0];
+	public static void main(String[] args) throws Exception {
 
-        switch (kindOfHerb) {
-            case "herb" -> herb = new Herb();
-            case "bush" -> bush = new Bush();
-            default -> throw new Exception("Error! Unknown operating system.");
-        }
+		getPlantType(args);
+		plant = plantCreator.getNewPlant();
 
-        if(herb != null){
-            if(!herb.isEdible()){
+        if(plant != null){
+            if(!plant.isEdible()){
                 System.out.println("Added warning.");
             }
-            herb.packing(herb.countNumberOfPackage(Integer.parseInt(args[1])));
-        }
-        if(bush !=null){
-            if(!bush.isEdible()){
-                System.out.println("Added warning");
-            }
-            bush.packing(bush.countNumberOfPackage(Integer.parseInt(args[1])));
+            plant.packing(plant.countNumberOfPackage(Integer.parseInt(args[1])));
         }
 
     }
+
+	private static void getPlantType(String[] args) throws Exception {
+		String kindOfHerb = args[0];
+
+        switch (kindOfHerb) {
+            case "herb" -> plantCreator = new HerbCreator();
+            case "bush" -> plantCreator = new BushCreator();
+            default -> throw new Exception("Error! Unknown operating system.");
+        }
+	}
 }

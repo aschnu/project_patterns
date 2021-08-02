@@ -1,18 +1,20 @@
 package plant;
 
-public class Bush {
-    private final int GRAM_PER_PACKAGE = 5;
+/**
+ * @author eathe
+ * <br><br>
+ * <b>Info:</b> This plant is not edible
+ */
+public class Bush implements Plant {
+	
+	private final int GRAM_PER_PACKAGE = 5;
 
-    public boolean isEdible(){
-        return false;
-    }
+	public boolean isEdible() {
+		return false;
+	}
+	
+	public int getGramPerPackage() {
+		return GRAM_PER_PACKAGE;
+	}
 
-    //TODO is bug
-    public int countNumberOfPackage(int grams){
-        return grams/GRAM_PER_PACKAGE;
-    }
-
-    public void packing(int numberOfPackages){
-        System.out.println("Bush has been packed: " + numberOfPackages + " packages");
-    }
 }
