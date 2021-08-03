@@ -10,12 +10,15 @@ import plant.Plant;
  */
 public class BushCreator extends PlantCreator {
 
-	/**
-	 * Creates new <Bush>
-	 */
 	@Override
 	Plant createPlant() {
 		return new Bush();
+	}
+
+	@Override
+	public void packing(int numberOfPackages) {
+		System.out.println("Added warning.");
+		System.out.println(this.getClass().getSimpleName() + " has been packed: " + numberOfPackages + " packages");
 	}
 
 }

@@ -1,88 +1,96 @@
 package plant;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class BushTest {
 
-	Bush bush = new Bush();
-	int maxGramsPerPackage = bush.getGramPerPackage();
-	
-	@Test
-	void shouldShowIfPlantIsEdible() {
-		
-		assertFalse(bush.isEdible());
-		
-	}
-	
-	@Test
-	void shouldHaveGramsPerPackageGreatrThanZero() {
-		
-		assertTrue(maxGramsPerPackage > 0);
-		
-	}
+    private static Bush bush;
+    private final int maxGramsPerPackage = bush.getGramPerPackage();
 
-	@Test
-	void shouldCountZeroPackages() {
+    @BeforeAll
+    static void setUp() {
+        bush = new Bush();
+    }
 
-		int grams = 0;
-		int expectedPackagesCount = 0;
+    @Test
+    void shouldHaveGramsPerPackageGreaterThanZero() {
 
-		int calculatedNumberOfPackages = bush.countNumberOfPackage(grams);
+        assertTrue(maxGramsPerPackage > 0);
 
-		assertEquals(expectedPackagesCount, calculatedNumberOfPackages);
+    }
 
-	}
-	
-	@Test
-	void shouldCountZeroPackagesWithGramsLessThanZero() {
+    @Test
+    void shouldCountZeroPackages() {
 
-		int grams = 0 - maxGramsPerPackage;
-		int expectedPackagesCount = 0;
+        int grams = 0;
+        int expectedPackagesCount = 0;
 
-		int calculatedNumberOfPackages = bush.countNumberOfPackage(grams);
+        int calculatedNumberOfPackages = bush.countNumberOfPackage(grams);
 
-		assertEquals(expectedPackagesCount, calculatedNumberOfPackages);
+        assertEquals(expectedPackagesCount, calculatedNumberOfPackages);
 
-	}
+    }
 
-	@Test
-	void shouldCountOneFullPackage() {
+    @Test
+    void shouldCountZeroPackagesWithGramsLessThanZero() {
 
-		int grams = maxGramsPerPackage;
-		int expectedPackagesCount = 1;
+        int grams = -maxGramsPerPackage;
+        int expectedPackagesCount = 0;
 
-		int calculatedNumberOfPackages = bush.countNumberOfPackage(grams);
+        int calculatedNumberOfPackages = bush.countNumberOfPackage(grams);
 
-		assertEquals(expectedPackagesCount, calculatedNumberOfPackages);
+        assertEquals(expectedPackagesCount, calculatedNumberOfPackages);
 
-	}
+    }
 
-	@Test
-	void shouldCountOneNotFullPackage() {
+    @Test
+    void shouldCountZeroPackagesAfterExceedingIntRange() {
 
-		int grams = maxGramsPerPackage - 1;
-		int expectedPackagesCount = 1;
+        int grams = 2147483647;
+        int expectedPackagesCount = 0;
 
-		int calculatedNumberOfPackages = bush.countNumberOfPackage(grams);
+        int calculatedNumberOfPackages = bush.countNumberOfPackage(grams+1);
 
-		assertEquals(expectedPackagesCount, calculatedNumberOfPackages);
+        assertEquals(expectedPackagesCount, calculatedNumberOfPackages);
 
-	}
+    }
 
-	@Test
-	void shouldCountTwoPackages() {
+    @Test
+    void shouldCountOneFullPackage() {
 
-		int grams = maxGramsPerPackage + 1;
-		int expectedPackagesCount = 2;
+        int expectedPackagesCount = 1;
 
-		int calculatedNumberOfPackages = bush.countNumberOfPackage(grams);
+        int calculatedNumberOfPackages = bush.countNumberOfPackage(maxGramsPerPackage);
 
-		assertEquals(expectedPackagesCount, calculatedNumberOfPackages);
+        assertEquals(expectedPackagesCount, calculatedNumberOfPackages);
 
-	}
-	
+    }
+
+    @Test
+    void shouldCountOneNotFullPackage() {
+
+        int grams = maxGramsPerPackage - 1;
+        int expectedPackagesCount = 1;
+
+        int calculatedNumberOfPackages = bush.countNumberOfPackage(grams);
+
+        assertEquals(expectedPackagesCount, calculatedNumberOfPackages);
+
+    }
+
+    @Test
+    void shouldCountTwoPackages() {
+
+        int grams = maxGramsPerPackage + 1;
+        int expectedPackagesCount = 2;
+
+        int calculatedNumberOfPackages = bush.countNumberOfPackage(grams);
+
+        assertEquals(expectedPackagesCount, calculatedNumberOfPackages);
+
+    }
+
 }

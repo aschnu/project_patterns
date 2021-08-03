@@ -7,14 +7,8 @@ package plant;
  */
 public class Bush implements Plant {
 	
-	private final int GRAM_PER_PACKAGE = 5;
-
-	public boolean isEdible() {
-		return false;
-	}
-	
 	public int getGramPerPackage() {
-		return GRAM_PER_PACKAGE;
+		return 5;
 	}
 
 }

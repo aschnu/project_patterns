@@ -10,12 +10,14 @@ import plant.Plant;
  */
 public class HerbCreator extends PlantCreator {
 
-	/**
-	 * Creates new <Herb>
-	 */
 	@Override
 	Plant createPlant() {
 		return new Herb();
+	}
+
+	@Override
+	public void packing(int numberOfPackages) {
+		System.out.println(this.getClass().getSimpleName() + " has been packed: " + numberOfPackages + " packages");
 	}
 
 }
