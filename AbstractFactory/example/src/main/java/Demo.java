@@ -20,7 +20,7 @@ public class Demo {
     }
 
     public static void main(String[] args) throws Exception {
-        Application application = configureApplication(args[0]);
+        Application application = configureApplication("victorian");
         application.createFurniture();
         application.hasLegs();
         application.sitOn();
