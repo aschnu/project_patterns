@@ -1,4 +1,0 @@
-rootProject.name = 'Builder'
-include 'example'
-include 'exercise'
-

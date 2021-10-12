@@ -1,6 +1,0 @@
-rootProject.name = 'FactoryMethod'
-include 'example'
-include 'exercise'
-include 'Builder'
-include 'Builder'
-
