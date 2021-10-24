@@ -4,13 +4,13 @@ import common.model.Issuer;
 
 import java.time.LocalDateTime;
 
-abstract public class AbstractNotification {
+public abstract class AbstractNotification {
 
-    private long transactionNumber;
-    private String transactionName;
-    private Issuer issuer;
-    private long transactionSum;
-    private LocalDateTime transactionDate;
+    private final long transactionNumber;
+    private final String transactionName;
+    private final Issuer issuer;
+    private final long transactionSum;
+    private final LocalDateTime transactionDate;
 
     public AbstractNotification(long transactionNumber, String transactionName, Issuer issuer, long transactionSum, LocalDateTime transactionDate) {
         this.transactionNumber = transactionNumber;

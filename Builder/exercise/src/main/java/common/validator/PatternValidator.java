@@ -28,13 +28,13 @@ public class PatternValidator {
 
     public DeviceType validateDeviceType(String deviceType) {
 
-        return DeviceType.valueOf(deviceType);
+        return DeviceType.valueOf(deviceType.toUpperCase());
     }
 
     public Issuer validateIssuer(String issuerId, String issuerCardName) {
 
         isValidPattern(issuerId, LocalPattern.ISSUER_ID);
-        return new Issuer(Integer.parseInt(issuerId), CardName.valueOf(issuerCardName));
+        return new Issuer(Integer.parseInt(issuerId), CardName.valueOf(issuerCardName.toUpperCase()));
     }
 
     public String validateDeviceVersion(String deviceVersion) {
@@ -78,7 +78,7 @@ public class PatternValidator {
         var isValid = Pattern.matches(pattern.getPattern(), input);
 
         if(!isValid) {
-            throw new IncorrectPatternException(pattern.toString());
+            throw new IncorrectPatternException(pattern.getPattern());
         }
     }
 

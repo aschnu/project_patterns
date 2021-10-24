@@ -3,16 +3,17 @@ package builder.concrete;
 import builder.Builder;
 import common.enums.CardName;
 import common.model.Issuer;
+import notification.AbstractNotification;
 
 import java.time.LocalDateTime;
 
-public class AbstractNotificationBuilder implements Builder {
+public abstract class AbstractNotificationBuilder implements Builder {
 
-    protected long transactionNumber;
-    protected String transactionName;
-    protected Issuer issuer;
-    protected long transactionSum;
-    protected LocalDateTime transactionDate;
+    private long transactionNumber;
+    private String transactionName;
+    private Issuer issuer;
+    private long transactionSum;
+    private LocalDateTime transactionDate;
 
     @Override
     public void setTransactionNumber(long transactionNumber) {
@@ -43,4 +44,5 @@ public class AbstractNotificationBuilder implements Builder {
     public void setIssuer(int id, CardName name) {
         this.issuer = new Issuer(id, name);
     }
+
 }
