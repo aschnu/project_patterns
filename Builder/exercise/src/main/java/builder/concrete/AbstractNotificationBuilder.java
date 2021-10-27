@@ -1,9 +1,8 @@
 package builder.concrete;
 
 import builder.Builder;
-import common.enums.CardName;
+import common.constant.CardName;
 import common.model.Issuer;
-import notification.AbstractNotification;
 
 import java.time.LocalDateTime;
 

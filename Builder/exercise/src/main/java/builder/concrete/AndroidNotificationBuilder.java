@@ -1,7 +1,7 @@
 package builder.concrete;
 
 import builder.Builder;
-import common.enums.DeviceType;
+import common.constant.DeviceType;
 import common.model.Issuer;
 import notification.AndroidNotification;
 

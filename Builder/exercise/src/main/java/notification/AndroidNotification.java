@@ -1,6 +1,6 @@
 package notification;
 
-import common.enums.DeviceType;
+import common.constant.DeviceType;
 import common.model.Issuer;
 
 import java.time.LocalDateTime;

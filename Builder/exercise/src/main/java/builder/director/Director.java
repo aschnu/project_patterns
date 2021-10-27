@@ -1,7 +1,7 @@
 package builder.director;
 
 import builder.Builder;
-import common.enums.CardName;
+import common.constant.CardName;
 import common.tool.PseudoRandomGenerator;
 
 import java.time.LocalDateTime;

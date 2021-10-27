@@ -1,4 +1,4 @@
-package common.enums;
+package common.constant;
 
 public enum Wallet {
 

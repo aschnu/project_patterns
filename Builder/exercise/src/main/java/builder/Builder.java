@@ -1,10 +1,7 @@
 package builder;
 
-import builder.concrete.AbstractNotificationBuilder;
-import common.enums.CardName;
+import common.constant.CardName;
 import common.model.Issuer;
-import notification.AbstractNotification;
-import notification.AndroidNotification;
 
 import java.time.LocalDateTime;
 

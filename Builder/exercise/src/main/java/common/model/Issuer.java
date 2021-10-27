@@ -1,6 +1,6 @@
 package common.model;
 
-import common.enums.CardName;
+import common.constant.CardName;
 
 public class Issuer {
 
