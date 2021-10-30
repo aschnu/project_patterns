@@ -1,9 +1,6 @@
 package common.validator;
 
-import common.constant.CardName;
-import common.constant.DeviceType;
-import common.constant.LocalPattern;
-import common.constant.NotificationDetails;
+import common.constant.*;
 
 import java.util.Arrays;
 import java.util.regex.Pattern;
@@ -11,10 +8,15 @@ import java.util.regex.Pattern;
 public class PatternValidator {
 
     public boolean isValid(String fieldName, String input) {
+
+        if (fieldName.equals(NotificationDetails.FIELD.COMMON.WALLET.getFieldName())) {
+            return Arrays.stream(Wallet.values()).anyMatch((t) -> t.getWalletName().equalsIgnoreCase(input));
+        }
+
         if (fieldName.equals(NotificationDetails.FIELD.COMMON.TRANSACTION_DATE.getFieldName())) {
             return isValidPattern(input, LocalPattern.TRANSACTION_DATETIME);
         }
-//TODO: possible bug - investigate
+
         if (fieldName.equals(NotificationDetails.FIELD.COMMON.DEVICE_TYPE.getFieldName())) {
             return Arrays.stream(DeviceType.values()).anyMatch((t) -> t.getDeviceType().equalsIgnoreCase(input));
         }
@@ -22,7 +24,7 @@ public class PatternValidator {
         if (fieldName.equals(NotificationDetails.FIELD.COMMON.ISSUER_ID.getFieldName())) {
             return isValidPattern(input, LocalPattern.ISSUER_ID);
         }
-//TODO: possible bug - investigate
+
         if (fieldName.equals(NotificationDetails.FIELD.COMMON.CARD_NAME.getFieldName())) {
             return Arrays.stream(CardName.values()).anyMatch((t) -> t.getCardName().equalsIgnoreCase(input));
         }
@@ -46,9 +48,9 @@ public class PatternValidator {
         if (fieldName.equals(NotificationDetails.FIELD.COMMON.TRANSACTION_NUMBER.getFieldName())) {
             return isValidPattern(input, LocalPattern.TRANSACTION_NUMBER);
         }
-//TODO: possible bug - investigate
+
         if (fieldName.equals(NotificationDetails.FIELD.COMMON.NOTIFICATION_CREATION_TYPE.getFieldName())) {
-            return Arrays.stream(CardName.values()).anyMatch((t) -> t.getCardName().equalsIgnoreCase(input));
+            return Arrays.stream(NotificationDetails.CREATION_TYPE.values()).anyMatch((t) -> t.getCreationType().equalsIgnoreCase(input));
         }
 
         return false;

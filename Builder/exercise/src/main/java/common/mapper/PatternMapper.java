@@ -1,15 +1,20 @@
 package common.mapper;
 
-import common.constant.CardName;
-import common.constant.DeviceType;
-import common.constant.LocalPattern;
-import common.constant.NotificationDetails;
+import common.constant.*;
 
 import java.util.Arrays;
 
 public class PatternMapper {
 
     public static String mapToPattern(String fieldName) {
+
+        if (fieldName.equals(NotificationDetails.FIELD.COMMON.NOTIFICATION_CREATION_TYPE.getFieldName())) {
+            return Arrays.toString(NotificationDetails.FIELD.CREATION_TYPE.values());
+        }
+
+        if (fieldName.equals(NotificationDetails.FIELD.COMMON.WALLET.getFieldName())) {
+            return Arrays.toString(Wallet.values());
+        }
 
         if (fieldName.equals(NotificationDetails.FIELD.COMMON.TRANSACTION_DATE.getFieldName())) {
             return LocalPattern.TRANSACTION_DATETIME.getPattern();

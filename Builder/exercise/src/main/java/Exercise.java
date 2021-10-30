@@ -1,4 +1,11 @@
+import builder.concrete.AbstractNotificationBuilder;
+import builder.concrete.AndroidNotificationBuilder;
+import builder.concrete.AppleNotificationBuilder;
+import builder.concrete.SamsungNotificationBuilder;
+import builder.director.Director;
 import common.constant.ConsoleMessage;
+import common.constant.NotificationDetails;
+import common.constant.Wallet;
 import common.tool.ConsoleIO;
 import common.validator.PatternValidator;
 
@@ -17,18 +24,153 @@ public class Exercise {
 
         System.out.println(ConsoleMessage.WELCOME.getMessage());
 
+        exercise.chooseWallet(console, notificationData);
+        exercise.chooseCreationPath(console, notificationData);
+        exercise.followWalletPath(console, notificationData);
+
+        System.out.println(notificationData.toString());
 
     }
 
-    private void chooseCreationPath(ConsoleIO console) {
-        String creationType;
+    private void followWalletPath(ConsoleIO console, Map<String, String> notificationData) {
+        var walletFiledName = NotificationDetails.FIELD.COMMON.WALLET.getFieldName();
+        var fastCreationType = NotificationDetails.CREATION_TYPE.FAST.getCreationType();
+        var customCreationType = NotificationDetails.CREATION_TYPE.CUSTOM.getCreationType();
+        var creationTypeFieldName = NotificationDetails.FIELD.COMMON.NOTIFICATION_CREATION_TYPE.getFieldName();
 
-        System.out.println(ConsoleMessage.INPUT_PATH.getMessage());
+        if (notificationData.get(walletFiledName).equalsIgnoreCase(Wallet.ANDROID.getWalletName())) {
+            if (notificationData.get(creationTypeFieldName).equalsIgnoreCase(customCreationType)) {
+                chooseCommonFields(console, notificationData);
+                chooseDeviceType(console, notificationData);
+                chooseDeviceVersion(console, notificationData);
+            } else if (notificationData.get(creationTypeFieldName).equalsIgnoreCase(fastCreationType)) {
 
-        creationType = console.scanUntilValid("Security");
+            } else {
+
+            }
+        } else if (notificationData.get(walletFiledName).equalsIgnoreCase(Wallet.APPLE.getWalletName())) {
+            if (notificationData.get(creationTypeFieldName).equalsIgnoreCase(customCreationType)) {
+                chooseCommonFields(console, notificationData);
+                chooseSecurity(console, notificationData);
+            } else if (notificationData.get(creationTypeFieldName).equalsIgnoreCase(fastCreationType)) {
+
+            } else {
+
+            }
+        } else if (notificationData.get(walletFiledName).equalsIgnoreCase(Wallet.SAMSUNG.getWalletName())) {
+            if (notificationData.get(creationTypeFieldName).equalsIgnoreCase(customCreationType)) {
+                chooseCommonFields(console, notificationData);
+                chooseDeviceType(console, notificationData);
+            } else if (notificationData.get(creationTypeFieldName).equalsIgnoreCase(fastCreationType)) {
+
+            } else {
+
+            }
+        }
+    }
+
+    private void chooseWallet(ConsoleIO console, Map<String, String> notificationData) {
+        var fieldName = NotificationDetails.FIELD.COMMON.WALLET.getFieldName();
+        System.out.println(ConsoleMessage.INPUT_WALLET.getMessage());
+
+        String creationType = console.scanUntilValid(fieldName);
+        notificationData.put(fieldName, creationType);
 
     }
 
+    private void chooseCreationPath(ConsoleIO console, Map<String, String> notificationData) {
+        var fieldName = NotificationDetails.FIELD.COMMON.NOTIFICATION_CREATION_TYPE.getFieldName();
+        System.out.println(ConsoleMessage.INPUT_CREATION_PATH.getMessage());
+
+        String creationType = console.scanUntilValid(fieldName);
+        notificationData.put(fieldName, creationType);
+
+    }
+
+    private void chooseTransactionNumber(ConsoleIO console, Map<String, String> notificationData) {
+        var fieldName = NotificationDetails.FIELD.COMMON.TRANSACTION_NUMBER.getFieldName();
+        System.out.println(ConsoleMessage.INPUT_TRANSACTION_NUMBER.getMessage());
+
+        String creationType = console.scanUntilValid(fieldName);
+        notificationData.put(fieldName, creationType);
+    }
+
+    private void chooseTransactionName(ConsoleIO console, Map<String, String> notificationData) {
+        var fieldName = NotificationDetails.FIELD.COMMON.TRANSACTION_NAME.getFieldName();
+        System.out.println(ConsoleMessage.INPUT_TRANSACTION_NAME.getMessage());
+
+        String creationType = console.scanUntilValid(fieldName);
+        notificationData.put(fieldName, creationType);
+    }
+
+    private void chooseTransactionSum(ConsoleIO console, Map<String, String> notificationData) {
+        var fieldName = NotificationDetails.FIELD.COMMON.TRANSACTION_SUM.getFieldName();
+        System.out.println(ConsoleMessage.INPUT_TRANSACTION_SUM.getMessage());
+
+        String creationType = console.scanUntilValid(fieldName);
+        notificationData.put(fieldName, creationType);
+    }
+
+    private void chooseTransactionDate(ConsoleIO console, Map<String, String> notificationData) {
+        var fieldName = NotificationDetails.FIELD.COMMON.TRANSACTION_DATE.getFieldName();
+        System.out.println(ConsoleMessage.INPUT_TRANSACTION_DATE.getMessage());
+
+        String creationType = console.scanUntilValid(fieldName);
+        notificationData.put(fieldName, creationType);
+    }
+
+    private void chooseIssuerId(ConsoleIO console, Map<String, String> notificationData) {
+        var fieldName = NotificationDetails.FIELD.COMMON.ISSUER_ID.getFieldName();
+        System.out.println(ConsoleMessage.INPUT_ISSUER_ID.getMessage());
+
+        String creationType = console.scanUntilValid(fieldName);
+        notificationData.put(fieldName, creationType);
+    }
+
+    private void chooseCardName(ConsoleIO console, Map<String, String> notificationData) {
+        var fieldName = NotificationDetails.FIELD.COMMON.CARD_NAME.getFieldName();
+        System.out.println(ConsoleMessage.INPUT_CARD_NAME.getMessage());
+
+        String creationType = console.scanUntilValid(fieldName);
+        notificationData.put(fieldName, creationType);
+    }
+
+    private void chooseDeviceType(ConsoleIO console, Map<String, String> notificationData) {
+        var fieldName = NotificationDetails.FIELD.COMMON.DEVICE_TYPE.getFieldName();
+        System.out.println(ConsoleMessage.INPUT_DEVICE_TYPE.getMessage());
+
+        String creationType = console.scanUntilValid(fieldName);
+        notificationData.put(fieldName, creationType);
+    }
+
+    private void chooseDeviceVersion(ConsoleIO console, Map<String, String> notificationData) {
+        var fieldName = NotificationDetails.FIELD.ANDROID.DEVICE_VERSION.getFieldName();
+        System.out.println(ConsoleMessage.INPUT_DEVICE_VERSION.getMessage());
+
+        String creationType = console.scanUntilValid(fieldName);
+        notificationData.put(fieldName, creationType);
+    }
+
+    private void chooseSecurity(ConsoleIO console, Map<String, String> notificationData) {
+        var fieldName = NotificationDetails.FIELD.APPLE.SECURITY.getFieldName();
+        System.out.println(ConsoleMessage.INPUT_SECURITY.getMessage());
+
+        String creationType = console.scanUntilValid(fieldName);
+        notificationData.put(fieldName, creationType);
+    }
+
+    private void chooseCommonFields(ConsoleIO console, Map<String, String> notificationData) {
+        chooseIssuerId(console, notificationData);
+        chooseCardName(console, notificationData);
+        chooseTransactionName(console, notificationData);
+        chooseTransactionNumber(console, notificationData);
+        chooseTransactionSum(console, notificationData);
+        chooseTransactionDate(console, notificationData);
+    }
+
+    private void chooseFieldsForAndroidWallet(ConsoleIO console, Map<String, String> notificationData) {
+
+    }
 
 //    private void createNotification(Map<String, String> params) {
 //

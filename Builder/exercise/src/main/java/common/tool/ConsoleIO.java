@@ -1,5 +1,6 @@
 package common.tool;
 
+import common.constant.ConsoleMessage;
 import common.mapper.PatternMapper;
 import common.validator.PatternValidator;
 
@@ -9,8 +10,6 @@ import java.util.Set;
 
 public class ConsoleIO {
 
-    private static final String INVALID_INPUT = "Invalid input";
-    private static final String INVALID_PATTERN = "Invalid pattern, please use: ";
     private static Scanner scanner;
 
     private PatternValidator validator = new PatternValidator();
@@ -20,15 +19,15 @@ public class ConsoleIO {
     }
 
     public String scanUntil(String expected) {
-        return scanUntil(expected, INVALID_INPUT);
+        return scanUntil(expected, ConsoleMessage.INPUT_EXCEPTION.getMessage());
     }
 
     public String scanUntil(Set<String> expected) {
-        return scanUntil(expected, INVALID_INPUT);
+        return scanUntil(expected, ConsoleMessage.INPUT_EXCEPTION.getMessage());
     }
 
     public String scanUntilValid(String fieldName) {
-        return scanUntilValid(fieldName, INVALID_PATTERN + PatternMapper.mapToPattern(fieldName));
+        return scanUntilValid(fieldName, ConsoleMessage.INPUT_PATTERN_EXCEPTION + PatternMapper.mapToPattern(fieldName));
     }
 
     public String scanUntil(String expected, String failMessage) {
