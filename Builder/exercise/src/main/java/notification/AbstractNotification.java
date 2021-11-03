@@ -20,24 +20,8 @@ public abstract class AbstractNotification {
         this.transactionDate = transactionDate;
     }
 
-    public long getTransactionNumber() {
-        return transactionNumber;
-    }
-
-    public String getTransactionName() {
-        return transactionName;
-    }
-
     public Issuer getIssuer() {
         return issuer;
-    }
-
-    public long getTransactionSum() {
-        return transactionSum;
-    }
-
-    public LocalDateTime getTransactionDate() {
-        return transactionDate;
     }
 
     @Override
@@ -51,4 +35,5 @@ public abstract class AbstractNotification {
                 ", transactionDate = " + transactionDate +
                 '}';
     }
+
 }

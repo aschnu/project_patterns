@@ -19,4 +19,5 @@ public enum LocalPattern {
     public String getPattern() {
         return pattern;
     }
+
 }

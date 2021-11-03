@@ -11,11 +11,8 @@ public enum CardName {
         this.cardName = cardName;
     }
 
-    public CardName findMatchingCard(String cardName) {
-        return CardName.valueOf(cardName);
-    }
-
     public String getCardName() {
         return cardName;
     }
+
 }

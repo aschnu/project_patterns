@@ -8,8 +8,4 @@ public class PseudoRandomGenerator {
         return min + (long) (Math.random() * (max - min));
     }
 
-    public static long generateRandomLong(long min, long max) {
-        return min + (long) (Math.random() * (max - min));
-    }
-
 }

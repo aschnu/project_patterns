@@ -14,14 +14,11 @@ public class AppleNotification extends AbstractNotification {
         this.security = security;
     }
 
-    public boolean isSecurity() {
-        return security;
-    }
-
     @Override
     public String toString() {
         return "Apple Notification {" +
                 "Security = " + security +
                 "} " + super.toString();
     }
+
 }

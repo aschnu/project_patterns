@@ -15,14 +15,11 @@ public class SamsungNotification extends AbstractNotification {
         this.deviceType = deviceType;
     }
 
-    public void setDeviceType(DeviceType deviceType) {
-        this.deviceType = deviceType;
-    }
-
     @Override
     public String toString() {
         return "Samsung Notification {" +
                 "Device Type = " + deviceType +
                 "} " + super.toString();
     }
+
 }

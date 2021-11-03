@@ -15,4 +15,5 @@ public enum Wallet {
     public String getWalletName() {
         return walletName;
     }
+
 }

@@ -1,7 +1,6 @@
 package builder.concrete;
 
 import builder.Builder;
-import common.constant.CardName;
 import common.model.Issuer;
 
 import java.time.LocalDateTime;
@@ -37,11 +36,6 @@ public abstract class AbstractNotificationBuilder implements Builder {
     @Override
     public void setIssuer(Issuer issuer) {
         this.issuer = issuer;
-    }
-
-    @Override
-    public void setIssuer(int id, CardName name) {
-        this.issuer = new Issuer(id, name);
     }
 
     public long getTransactionNumber() {

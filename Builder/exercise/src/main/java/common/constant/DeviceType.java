@@ -14,4 +14,5 @@ public enum DeviceType {
     public String getDeviceType() {
         return deviceType;
     }
+
 }

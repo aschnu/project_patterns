@@ -17,14 +17,6 @@ public class AndroidNotification extends AbstractNotification {
         this.deviceVersion = deviceVersion;
     }
 
-    public DeviceType getDeviceType() {
-        return deviceType;
-    }
-
-    public String getDeviceVersion() {
-        return deviceVersion;
-    }
-
     @Override
     public String toString() {
         return "Android Notification {" +
@@ -32,4 +24,5 @@ public class AndroidNotification extends AbstractNotification {
                 ", Device Version = '" + deviceVersion + '\'' +
                 "} " + super.toString();
     }
+
 }

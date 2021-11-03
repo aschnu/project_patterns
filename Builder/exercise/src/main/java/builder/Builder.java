@@ -1,6 +1,5 @@
 package builder;
 
-import common.constant.CardName;
 import common.model.Issuer;
 
 import java.time.LocalDateTime;
@@ -16,7 +15,5 @@ public interface Builder {
     void setTransactionDate(LocalDateTime transactionDate);
 
     void setIssuer(Issuer issuer);
-
-    void setIssuer(int id, CardName name);
 
 }
