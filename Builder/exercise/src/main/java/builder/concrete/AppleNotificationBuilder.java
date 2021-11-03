@@ -17,6 +17,11 @@ public class AppleNotificationBuilder extends AbstractNotificationBuilder implem
                 security);
     }
 
+    public AppleNotification generateNotification() {
+        return new AppleNotification(getTransactionNumber(), getTransactionName(), getIssuer(), getTransactionSum(),
+                getTransactionDate(), security);
+    }
+
     public void setSecurity(boolean security) {
         this.security = security;
     }

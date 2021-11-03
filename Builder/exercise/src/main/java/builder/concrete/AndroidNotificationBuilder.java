@@ -19,6 +19,11 @@ public class AndroidNotificationBuilder extends AbstractNotificationBuilder impl
                 deviceType, deviceVersion);
     }
 
+    public AndroidNotification generateNotification() {
+        return new AndroidNotification(getTransactionNumber(), getTransactionName(), getIssuer(), getTransactionSum(),
+                getTransactionDate(), deviceType, deviceVersion);
+    }
+
     public void setDeviceType(DeviceType deviceType) {
         this.deviceType = deviceType;
     }

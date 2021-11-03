@@ -1,6 +1,7 @@
 import builder.concrete.AndroidNotificationBuilder;
 import builder.concrete.AppleNotificationBuilder;
 import builder.concrete.SamsungNotificationBuilder;
+import builder.director.Director;
 import common.constant.*;
 import common.mapper.InputMapper;
 import common.tool.ConsoleIO;
@@ -26,15 +27,15 @@ public class Exercise {
 
         System.out.println("Notification data: " + notificationData);
 
-        notification =  exercise.buildNotification(notificationData);
+        notification = exercise.buildNotification(notificationData);
 
-        System.out.println("Builded notification: " + notification);
+        System.out.println("Built notification: " + notification);
 
     }
 
     private AbstractNotification buildNotification(Map<String, String> notificationData) {
         if (notificationData.get(NotificationDetails.FIELD.COMMON.NOTIFICATION_CREATION_TYPE.getFieldName())
-                .equals(NotificationDetails.CREATION_TYPE.FAST.getCreationType())) {
+                .equalsIgnoreCase(NotificationDetails.CREATION_TYPE.FAST.getCreationType())) {
             return buildFastNotificationFromInput(notificationData);
         } else {
             return buildCustomNotificationFromInput(notificationData);
@@ -42,6 +43,45 @@ public class Exercise {
     }
 
     private AbstractNotification buildFastNotificationFromInput(Map<String, String> notificationData) {
+        InputMapper inputMapper = new InputMapper();
+        Director director = new Director();
+
+        if (notificationData.get(NotificationDetails.FIELD.COMMON.WALLET.getFieldName()).equalsIgnoreCase(Wallet.ANDROID.getWalletName())) {
+            AndroidNotificationBuilder builder = new AndroidNotificationBuilder();
+
+            director.constructDefaultNotification(builder,
+                    inputMapper.mapToTransactionSumOrNumber(notificationData.get(NotificationDetails.FIELD.COMMON.TRANSACTION_SUM.getFieldName())),
+                    inputMapper.mapToCardName(notificationData.get(NotificationDetails.FIELD.COMMON.CARD_NAME.getFieldName())));
+
+            builder.setDeviceType(inputMapper.mapToDeviceType(notificationData.get(NotificationDetails.FIELD.COMMON.DEVICE_TYPE.getFieldName())));
+            builder.setDeviceVersion(notificationData.get(NotificationDetails.FIELD.ANDROID.DEVICE_VERSION.getFieldName()));
+
+            return builder.generateNotification();
+
+        } else if (notificationData.get(NotificationDetails.FIELD.COMMON.WALLET.getFieldName()).equalsIgnoreCase(Wallet.APPLE.getWalletName())) {
+            AppleNotificationBuilder builder = new AppleNotificationBuilder();
+
+            director.constructDefaultNotification(builder,
+                    inputMapper.mapToTransactionSumOrNumber(notificationData.get(NotificationDetails.FIELD.COMMON.TRANSACTION_SUM.getFieldName())),
+                    inputMapper.mapToCardName(notificationData.get(NotificationDetails.FIELD.COMMON.CARD_NAME.getFieldName())));
+
+            builder.setSecurity(inputMapper.mapToSecurity(notificationData.get(NotificationDetails.FIELD.APPLE.SECURITY.getFieldName())));
+
+            return builder.generateNotification();
+
+
+        } else if (notificationData.get(NotificationDetails.FIELD.COMMON.WALLET.getFieldName()).equalsIgnoreCase(Wallet.SAMSUNG.getWalletName())) {
+            SamsungNotificationBuilder builder = new SamsungNotificationBuilder();
+
+            director.constructDefaultNotification(builder,
+                    inputMapper.mapToTransactionSumOrNumber(notificationData.get(NotificationDetails.FIELD.COMMON.TRANSACTION_SUM.getFieldName())),
+                    inputMapper.mapToCardName(notificationData.get(NotificationDetails.FIELD.COMMON.CARD_NAME.getFieldName())));
+
+            builder.setDeviceType(inputMapper.mapToDeviceType(notificationData.get(NotificationDetails.FIELD.COMMON.DEVICE_TYPE.getFieldName())));
+
+            return builder.generateNotification();
+
+        }
         return null;
     }
 

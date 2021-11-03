@@ -7,11 +7,25 @@ import common.model.Issuer;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.Arrays;
+import java.util.Optional;
 
 public class InputMapper {
 
+    public CardName mapToCardName(String cardName) {
+        Optional<CardName> optionalCardName = Arrays.stream(CardName.values())
+                .filter(c -> c.getCardName().equalsIgnoreCase(cardName))
+                .findFirst();
+
+        return optionalCardName.orElse(null);
+    }
+
     public DeviceType mapToDeviceType(String deviceType) {
-        return DeviceType.valueOf(deviceType.toUpperCase());
+
+        Optional<DeviceType> optionalDeviceType = Arrays.stream(DeviceType.values())
+                .filter(d -> d.getDeviceType().equalsIgnoreCase(deviceType))
+                .findFirst();
+
+        return optionalDeviceType.orElse(null);
     }
 
     public LocalDateTime mapToTransactionDate(String transactionDate) {
@@ -24,7 +38,9 @@ public class InputMapper {
 
 
     public Issuer mapToIssuer(String issuerId, String issuerCardName) {
-        return new Issuer(Integer.parseInt(issuerId), CardName.valueOf(issuerCardName.toUpperCase()));
+        CardName cardName = mapToCardName(issuerCardName);
+
+        return new Issuer(Integer.parseInt(issuerId), cardName);
     }
 
 

@@ -18,6 +18,11 @@ public class SamsungNotificationBuilder extends AbstractNotificationBuilder impl
                 deviceType);
     }
 
+    public SamsungNotification generateNotification() {
+        return new SamsungNotification(getTransactionNumber(), getTransactionName(), getIssuer(), getTransactionSum(),
+                getTransactionDate(), deviceType);
+    }
+
     public void setDeviceType(DeviceType deviceType) {
         this.deviceType = deviceType;
     }

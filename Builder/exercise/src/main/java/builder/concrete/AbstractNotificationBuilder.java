@@ -44,4 +44,23 @@ public abstract class AbstractNotificationBuilder implements Builder {
         this.issuer = new Issuer(id, name);
     }
 
+    public long getTransactionNumber() {
+        return transactionNumber;
+    }
+
+    public String getTransactionName() {
+        return transactionName;
+    }
+
+    public Issuer getIssuer() {
+        return issuer;
+    }
+
+    public long getTransactionSum() {
+        return transactionSum;
+    }
+
+    public LocalDateTime getTransactionDate() {
+        return transactionDate;
+    }
 }
