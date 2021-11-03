@@ -1,0 +1,37 @@
+Do zaimplementowania sa obiekty reprezentujące 3 rodzaje notyfikacji dla różnych urządzeń:
+Android, Samsung i Apple. Każda z notyfikacji posiada takie oto pola:
+
+Android:
+- Numer transackji ^[0-9]{0,10}$
+- Nazwa transakcji ^([A-Za-z0-9\s]){0,35}$
+- Issuer (obiekt):
+   +Id^[0-9]{0,1}
+   +Nazwa Issuera $(np. mastercard/visa)
+- Suma transakcji [0-9]{0,10}
+- Typ urzadzenia (Android)
+- Data transakcji
+- Wersja urzadzenia ^[A-Za-z0-9]{0,5}.{1}[0-9]{0,4}$
+
+Samsung:
+- Numer transackji ^[0-9]{0,10}$
+- Nazwa transakcji ^([A-Za-z0-9\s]){0,25}$
+- Issuer (obiekt):
+   +Id^[0-9]{0,1}
+   +Nazwa Issuera $(np. mastercard/visa)
+- Suma transakcji [0-9]{0,10}
+- Typ urzadzenia (Samsung)
+- Data transakcji
+
+Apple:
+- Numer transackji ^[0-9]{0,10}$
+- Id transakcji ^[0-9]{0,10}$
+- Nazwa transakcji ^([A-Za-z0-9\s]){0,15}$
+- Issuer (obiekt):
+   +Id^[0-9]{0,1}
+   +Nazwa Issuera $(np. mastercard/visa)
+- Suma transakcji [0-9]{0,10}
+- Data transakcji
+- Security true/false
+
+Wykorzystaj Buildera do implementacji struktury notyfikacji,
+w klasie demonstracyjnej zadomenstruj uruchomienie trzech notyfikacji dla wybranych przez siebie issuerów.
