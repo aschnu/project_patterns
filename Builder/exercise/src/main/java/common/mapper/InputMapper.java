@@ -1,6 +1,7 @@
 package common.mapper;
 
 import common.constant.CardName;
+import common.constant.DeviceType;
 import common.model.Issuer;
 
 import java.time.LocalDateTime;
@@ -8,6 +9,10 @@ import java.time.Month;
 import java.util.Arrays;
 
 public class InputMapper {
+
+    public DeviceType mapToDeviceType(String deviceType) {
+        return DeviceType.valueOf(deviceType.toUpperCase());
+    }
 
     public LocalDateTime mapToTransactionDate(String transactionDate) {
         int[] dateTime = Arrays.stream(transactionDate.split("-|:|\\s|/|\\|T|t"))
